@@ -39,12 +39,11 @@ These live in `src/desk.js`, which both the screens and the assistant's tools ca
 | `src/tools.js` | The assistant's tools (wrap `desk.js`) |
 | `src/agent.js` | System prompt and the Claude tool loop (Opus 5.5, adaptive thinking, server-side refusal fallback) |
 | `src/server.js` | Express API and chat endpoint |
-| `src/db.js`, `src/auth.js`, `src/seed.js` | SQLite schema, logins, first-run data |
+| `src/db.js`, `src/auth.js`, `src/seed.js` | Database (SQLite file locally, Turso when hosted), logins, first-run data |
+| `api/index.js`, `vercel.json` | Vercel entry point and settings |
 | `public/` | The web app (plain JS, no build step) |
 | `test/` | `npm test`: rules, role scoping, and the agent loop against a scripted API |
 
 ## Hosting
 
-Any Node host with a persistent disk works (Render, Railway, a small VPS). Set `ANTHROPIC_API_KEY`, `DB_PATH` on the persistent disk, `NODE_ENV=production`, and change `SEED_PASSWORD` or reset the demo passwords before inviting the team. A `Dockerfile` is included.
-
-See `DEPLOY.md` for step-by-step setup on Render.
+Set up for Vercel with a Turso database: see `DEPLOY.md`. Locally (or on any server with a disk) it uses a SQLite file instead; set `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` to use Turso anywhere.
