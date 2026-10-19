@@ -1,0 +1,29 @@
+# Render Blueprint: one web service with a small persistent disk for the SQLite database.
+services:
+  - type: web
+    name: sales-desk
+    runtime: node
+    plan: starter
+    region: singapore
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /var/data/sales-desk.db
+      - key: CLAUDE_MODEL
+        value: claude-opus-5-5
+      - key: CLAUDE_EFFORT
+        value: medium
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: SEED_PASSWORD
+        sync: false
+      - key: COMPANY_NAME
+        sync: false

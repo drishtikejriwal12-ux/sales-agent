@@ -46,3 +46,5 @@ These live in `src/desk.js`, which both the screens and the assistant's tools ca
 ## Hosting
 
 Any Node host with a persistent disk works (Render, Railway, a small VPS). Set `ANTHROPIC_API_KEY`, `DB_PATH` on the persistent disk, `NODE_ENV=production`, and change `SEED_PASSWORD` or reset the demo passwords before inviting the team. A `Dockerfile` is included.
+
+See `DEPLOY.md` for step-by-step setup on Render.
